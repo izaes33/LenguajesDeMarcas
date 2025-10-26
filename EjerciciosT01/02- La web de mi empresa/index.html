@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wash Detail Auto</title>
+  </head>
+  <body>
+    <main>
+      <section id="Presentacion">
+        <h1>Wash Detail Auto</h1>
+        <a href="https://detailwashauto.es/" target="_blank"
+          >Conoce los servicios (enlace)</a
+        >
+        <br />
+        <br />
+        <br />
+        <img src="img/detailing.jpg" width="700px" alt="Lavadero" />
+      </section>
+      <section id="formulario">
+        <form>
+          <fieldset>
+            <legend>Formulario</legend>
+            <label>Nombre: <input type="text" name="Nombre" /></label>
+            <label>Email: <input type="email" name="email" /></label>
+            <label>Teléfono: <input type="number" name="telefono" /></label>
+            <br />
+            <br />
+            <label
+              >Fecha de entrega: <input type="date" name="fechaEntrega"
+            /></label>
+            <br />
+            <br />
+            <fieldset>
+              <legend>¿Cómo nos conociste?</legend>
+              <label
+                >Radio<input type="checkbox" name="llegada" value="radio"
+              /></label>
+              <label
+                >Reels en redes sociales<input
+                  type="checkbox"
+                  name="llegada"
+                  value="redes"
+              /></label>
+              <label
+                >Anuncios:
+                <select name="llegada">
+                  <option value="null">---</option>
+                  <option value="anunciosTV">TV</option>
+                  <option value="anunciosIg">Instagram</option>
+                  <option value="anunciosFb">Facebook</option>
+                </select>
+              </label>
+            </fieldset>
+            <br />
+            <fieldset>
+              <legend>¿Qué necesitas?</legend>
+              <label
+                ><input type="radio" name="servicio" value="limpieza" />Lavado /
+                Limpieza</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="servicio"
+                  value="pulido"
+                />Pulido</label
+              >
+              <label><input type="radio" name="servicio" value="chapa" /></label
+              >Recubrimiento
+              <label
+                ><input
+                  type="radio"
+                  name="servicio"
+                  value="lunas"
+                />Lunas</label
+              >
+            </fieldset>
+            <br />
+            <label
+              >Cuentanos la historia de tu coche! <textarea></textarea>
+            </label>
+            <br />
+            <br />
+            <button type="submit">Enviar formulario</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
