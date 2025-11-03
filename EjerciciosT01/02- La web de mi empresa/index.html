@@ -7,80 +7,95 @@
   </head>
   <body>
     <main>
-      <section id="Presentacion">
+      <header id="Presentacion">
         <h1>Wash Detail Auto</h1>
-        <a href="https://detailwashauto.es/" target="_blank"
-          >Conoce los servicios (enlace)</a
+        <a
+          href="https://detailwashauto.es/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
+          Conoce los servicios (enlace)
+        </a>
         <br />
         <br />
         <br />
-        <img src="img/detailing.jpg" width="700px" alt="Lavadero" />
-      </section>
+        <img src="img/detailing.jpg" width="700" alt="Lavadero" />
+      </header>
+
       <section id="formulario">
-        <form>
+        <form action="#" method="post">
           <fieldset>
             <legend>Formulario</legend>
-            <label>Nombre: <input type="text" name="Nombre" /></label>
-            <label>Email: <input type="email" name="email" /></label>
-            <label>Teléfono: <input type="number" name="telefono" /></label>
+
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" />
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" />
+            <label for="telefono">Teléfono: </label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              pattern="[0-9]{9}"
+            />
             <br />
             <br />
-            <label
-              >Fecha de entrega: <input type="date" name="fechaEntrega"
-            /></label>
+
+            <label for="fechaEntrega">Fecha de entrega: </label>
+            <input type="date" id="fechaEntrega" name="fechaEntrega" />
             <br />
             <br />
+
             <fieldset>
               <legend>¿Cómo nos conociste?</legend>
-              <label
-                >Radio<input type="checkbox" name="llegada" value="radio"
-              /></label>
-              <label
-                >Reels en redes sociales<input
-                  type="checkbox"
-                  name="llegada"
-                  value="redes"
-              /></label>
-              <label
-                >Anuncios:
-                <select name="llegada">
-                  <option value="null">---</option>
-                  <option value="anunciosTV">TV</option>
-                  <option value="anunciosIg">Instagram</option>
-                  <option value="anunciosFb">Facebook</option>
-                </select>
+              <label>
+                <input type="checkbox" name="llegada" value="radio" /> Radio
               </label>
+              <label>
+                <input type="checkbox" name="llegada" value="redes" /> Reels en
+                redes sociales
+              </label>
+              <label for="anuncios">Anuncios: </label>
+              <select id="anuncios" name="llegada">
+                <option value="">---</option>
+                <option value="anunciosTV">TV</option>
+                <option value="anunciosIg">Instagram</option>
+                <option value="anunciosFb">Facebook</option>
+              </select>
             </fieldset>
+
             <br />
             <fieldset>
               <legend>¿Qué necesitas?</legend>
-              <label
-                ><input type="radio" name="servicio" value="limpieza" />Lavado /
-                Limpieza</label
-              >
-              <label
-                ><input
-                  type="radio"
-                  name="servicio"
-                  value="pulido"
-                />Pulido</label
-              >
-              <label><input type="radio" name="servicio" value="chapa" /></label
-              >Recubrimiento
-              <label
-                ><input
-                  type="radio"
-                  name="servicio"
-                  value="lunas"
-                />Lunas</label
-              >
+              <label>
+                <input type="radio" name="servicio" value="limpieza" /> Lavado /
+                Limpieza
+              </label>
+              <label>
+                <input type="radio" name="servicio" value="pulido" /> Pulido
+              </label>
+              <label>
+                <input type="radio" name="servicio" value="chapa" />
+                Recubrimiento
+              </label>
+              <label>
+                <input type="radio" name="servicio" value="lunas" /> Lunas
+              </label>
             </fieldset>
+
             <br />
-            <label
-              >Cuentanos la historia de tu coche! <textarea></textarea>
-            </label>
-            <br />
+
+            <fieldset>
+              <legend>Cuéntanos la historia de tu coche:</legend>
+              <label for="historia">
+                <textarea
+                  id="historia"
+                  name="historia"
+                  cols="50"
+                  rows="7"
+                ></textarea>
+              </label>
+            </fieldset>
             <br />
             <button type="submit">Enviar formulario</button>
           </fieldset>
