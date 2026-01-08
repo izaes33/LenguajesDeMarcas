@@ -1,0 +1,205 @@
+/* =========================
+   VARIABLES CSS
+   ========================= */
+:root {
+  --color-principal: #2c7be5;    /* Color principal de la marca, usado en bordes y acentos */
+  --color-fondo: #f0f6ff;        /* Color de fondo para secciones destacadas */
+  --color-footer: #222;          /* Fondo del footer */
+  --color-footer-texto: #fff;    /* Color del texto del footer */
+  --espaciado-pequeno: 5px;      /* Espaciado pequeño reutilizable */
+  --espaciado-medio: 10px;       /* Espaciado medio reutilizable */
+  --espaciado-grande: 20px;      /* Espaciado grande reutilizable */
+}
+
+/* =========================
+   MODELO DE CAJA GLOBAL
+   ========================= */
+* {
+  box-sizing: border-box; /* Padding y border se incluyen en el ancho/alto del elemento */
+}
+
+/* =========================
+   ESTILO GENERAL DEL BODY
+   ========================= */
+body {
+  padding-top: 170px;        /* Deja espacio para la cabecera fija */
+  font-family: Arial, sans-serif; /* Fuente general del sitio */
+}
+
+/* =========================
+   SECCIONES: SCROLL COMPENSADO
+   ========================= */
+section {
+  scroll-margin-top: 180px; /* Evita que la cabecera fija tape la sección al usar enlaces internos */
+}
+
+/* =========================
+   CABECERA
+   ========================= */
+.cabecera {
+  position: fixed;           /* La cabecera siempre visible en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;               /* Ocupa todo el ancho de la ventana */
+  background-color: white;   /* Fondo blanco */
+  z-index: 1000;             /* Por encima del resto del contenido */
+  border-bottom: 1px solid #ccc; /* Línea inferior de separación */
+  padding: 0 var(--espaciado-medio); /* Separación horizontal */
+  box-sizing: border-box;    /* Incluye padding y border en el ancho total */
+}
+
+/* Logo de la cabecera */
+.logo {
+  max-width: 140px;          /* Tamaño máximo del logo */
+  float: left;               /* Flota a la izquierda */
+}
+
+/* Título y subtítulo en la cabecera */
+.titulo-subtitulo {
+  width: 60%;                /* Ocupa 60% del ancho */
+  float: right;              /* Flota a la derecha del logo */
+  text-align: right;         /* Texto alineado a la derecha */
+}
+
+/* =========================
+   NAVEGACIÓN
+   ========================= */
+nav {
+  clear: both;               /* Evita que los floats de la cabecera afecten al nav */
+  display: block;            /* Se comporta como bloque */
+  text-align: center;        /* Centra el contenido */
+  padding: var(--espaciado-medio) 0; /* Espacio vertical */
+}
+
+nav ul {
+  list-style: none;          /* Sin viñetas */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;     /* Elementos en línea pero con comportamiento de bloque */
+  margin: 0 var(--espaciado-medio); /* Espaciado horizontal entre enlaces */
+}
+
+/* =========================
+   TABLA DE PRODUCTOS
+   ========================= */
+.full-table {
+  width: 100%;               /* Ocupa todo el ancho disponible */
+  border-collapse: separate; /* Separación de celdas */
+  border-spacing: var(--espaciado-pequeno); /* Espacio entre celdas */
+}
+
+.full-table td {
+  width: 33.33%;             /* Tres columnas iguales */
+  background: #eaeaea;       /* Fondo gris claro */
+  text-align: center;
+  padding: var(--espaciado-grande); /* Espacio interior */
+}
+
+/* Contenedor genérico del producto */
+.product {
+  display: block;            /* Bloque estándar, ya no usa flexbox */
+}
+
+.product-name {
+  font-size: 16px;
+  margin: 0;                 /* Sin margen extra */
+}
+
+.product-image {
+  max-width: 100%;           /* La imagen no excede el ancho del contenedor */
+  height: auto;              /* Mantiene proporción */
+}
+
+.product-description {
+  font-size: 14px;
+  margin: 0;
+}
+
+.product-price {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* =========================
+   CAJA DE VENTAJAS
+   ========================= */
+.caja-ventajas {
+  /* Margen: 
+     superior e inferior grande, izquierda automática (empuja la caja a la derecha), derecha 10px */
+  margin: var(--espaciado-grande) 10px var(--espaciado-grande) auto;
+
+  padding: var(--espaciado-grande);              /* Espacio interior para que el contenido no toque los bordes */
+  border: 2px solid var(--color-principal);      /* Borde azul destacado */
+  background-color: var(--color-fondo);          /* Fondo suave para resaltar la caja */
+  border-radius: 8px;                            /* Bordes redondeados */
+  max-width: 500px;                              /* Ancho máximo para que la caja no se extienda demasiado */
+}
+
+/* =========================
+   TÍTULO DE LA CAJA
+   ========================= */
+.caja-ventajas h2 {
+  margin-top: 0;                                  /* Sin margen superior para pegarse al borde del padding */
+  margin-bottom: var(--espaciado-medio);          /* Separación inferior respecto a la lista */
+  font-size: 20px;                                /* Tamaño del título */
+}
+
+/* =========================
+   LISTA DENTRO DE LA CAJA
+   ========================= */
+.caja-ventajas ul {
+  margin: 0;                      /* Sin margen exterior */
+  padding-left: 20px;             /* Sangría de la lista */
+}
+
+.caja-ventajas li {
+  margin-bottom: 8px;         /* Separación entre elementos de la lista */
+  font-size: 16px;            /* Tamaño de texto de cada ventaja */
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer {
+  margin-top: var(--espaciado-grande);    /* Separación superior */
+  padding: var(--espaciado-medio);        /* Espacio interior */
+  background-color: var(--color-footer);  /* Fondo oscuro */
+  color: var(--color-footer-texto);       /* Texto blanco */
+  text-align: center;
+  font-size: 14px;
+}
+
+footer .anio {
+  font-weight: bold;                       /* Resalta el año */
+}
+
+/* =========================
+   MEDIA QUERY PARA PANTALLAS PEQUEÑAS
+   ========================= */
+@media (max-width: 512px) {
+  /* Reducir padding de la cabecera */
+  .cabecera {
+    padding: 5px 10px;                     /* Menos espacio arriba y abajo */
+  }
+
+  /* Logo más pequeño */
+  .logo {
+    max-width: 70px;                        /* La mitad del tamaño original */
+  }
+
+  /* Título y subtítulo más pequeños */
+  .titulo-subtitulo h1 {
+    font-size: 16px;                        /* Reducido */
+    line-height: 1.2;                       /* Altura de línea ajustada */
+  }
+
+  .titulo-subtitulo p {
+    font-size: 12px;                        /* Reducido */
+    line-height: 1.2;                       /* Altura de línea ajustada */
+  }
+}
+

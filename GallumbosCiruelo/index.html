@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallumbos Ciruelo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <img
+        class="logo"
+        src="img/gallumbos_ciruelo.jpg"
+        alt="Logo Gallumbos Ciruelo"
+      />
+      <div class="titulo-subtitulo">
+        <h1>Gallumbos Ciruelo</h1>
+        <p>Pa que tu minga no arrastre en el suelo.</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#top">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#productos">Colección</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="sobre-nosotros" class="sobre-nosotros">
+        <article>
+          <h2>Sobre Gallumbos Ciruelo</h2>
+          <p>
+            Nuestra marca se dedica a la venta de calzoncillos y calcetines, y
+            tiene el <strong>compromiso ecológico</strong> de hacer
+            <mark>productos</mark> 100% de mimbre.
+          </p>
+          <p>
+            Cualquier producto de nuestra marca está pensado para cumplir con
+            las expectativas de los más <em><strong>huevones</strong></em> y
+            soportar los pies más pestilentes.
+          </p>
+          <p>
+            Lo que nos diferencia de la competencia, y nos enorgullece, es que
+            nuestros calzoncillos también puedan usarse como
+            <mark>trapo de cocina</mark> o para
+            <mark>limpiar las lunas</mark> del coche.
+          </p>
+        </article>
+      </section>
+
+      <section id="productos" class="productos">
+        <h2>Productos</h2>
+        <table class="full-table">
+          <tr>
+            <article class="celda-producto">
+              <td>
+                <div class="product">
+                  <h3 class="product-name">Ciruelo Plus</h3>
+                  <figure>
+                    <img
+                      src="img/ciruelo plus.png"
+                      alt="Ciruelo Plus"
+                      class="product-image"
+                    />
+                    <figcaption>Ciruelo Plus</figcaption>
+                  </figure>
+                  <p class="product-description">
+                    Sin plomo, Plus, 98 octanos, so hot.
+                  </p>
+                  <p class="product-price">49,99 €</p>
+                </div>
+              </td>
+            </article>
+            <article class="celda-producto">
+              <td>
+                <div class="product">
+                  <h3 class="product-name">Ciruelo Tropical</h3>
+                  <figure>
+                    <img
+                      src="img/ciruelo tropical.png"
+                      alt="Ciruelo Tropical"
+                      class="product-image"
+                    />
+                    <figcaption>Ciruelo Tropical</figcaption>
+                  </figure>
+                  <p class="product-description">
+                    Pensado para los amantes del ritmo caribeño sabrosón.
+                  </p>
+                  <p class="product-price">49,99 €</p>
+                </div>
+              </td>
+            </article>
+            <article class="celda-producto">
+              <td>
+                <div class="product">
+                  <h3 class="product-name">Ciruelo Off the Wall</h3>
+                  <figure>
+                    <img
+                      src="img/ciruelo off the wall.png"
+                      alt="Ciruelo Off The Wall"
+                      class="product-image"
+                    />
+                    <figcaption>Ciruelo Off The Wall</figcaption>
+                  </figure>
+                  <p class="product-description">
+                    Salta el muro y lleva tu ciruelo a lugares insospechados.
+                  </p>
+                  <p class="product-price">49,99 €</p>
+                </div>
+              </td>
+            </article>
+          </tr>
+        </table>
+      </section>
+
+      <section class="caja-ventajas">
+        <h2>¿Por qué elegir nuestra marca?</h2>
+        <ul>
+          <li>Mimbre 100% natural</li>
+          <li>Diseño anatómico</li>
+          <li>Fabricado en Turkmenistán</li>
+        </ul>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Formulario de contacto</legend>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" />
+
+            <fieldset>
+              <legend>Tipo de consulta</legend>
+              <label for="consulta">Opciones:</label>
+              <select id="consulta" name="consulta">
+                <option value="">---</option>
+                <option value="pene-pequeño">Mini picha</option>
+                <option value="pene-descapotable">Pene descapotable</option>
+                <option value="pene-enorme">Ariete Vikingo</option>
+              </select>
+            </fieldset>
+
+            <fieldset>
+              <legend>Cuéntanos tus preocupaciones</legend>
+              <label for="preocupaciones">
+                <textarea
+                  id="preocupaciones"
+                  name="preocupaciones"
+                  cols="50"
+                  rows="7"
+                ></textarea>
+              </label>
+            </fieldset>
+
+            <button type="submit">Enviar formulario</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        © <span class="anio">2025</span>
+        <span class="marca">Gallumbos Ciruelo.</span> Todos los derechos
+        reservados.
+      </p>
+    </footer>
+  </body>
+</html>
