@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+
+}
+/* */
+header {
+    background-color: brown;
+    color:rgb(65, 15, 0); /* Color del texto*/
+    text-align: center;
+    padding: 1rem
+}
+
+.logo{
+    max-width: 100%; /*La imagen, como máximo puede ocupar el 100% del contenedor PARA QUE NO DESBORDE */
+    height: auto;  /* Aunque el alto se adapta autom., es buna práctica indicar esto*/
+    width: 300px; /* Con esto el alto se adapta */
+    display: block; /*Efecto directo: Dice "esta imagen pasa a ocupar toda su sección (todo su bloque)
+    El bloque que ocupa ya no es afectada por flex-align porque text-align solo centra contenidos inline
+    (texto */
+    margin: 0 auto;/* Centra horizontal, pero no verticalmente. Se usa con display:block */
+    /* margin: auto; Centra tanto vertical como horizontalmente */
+}
+
+/*Flex hay que utilizarlo en el contenedor que queramos alinear ítems*/
+
+.productos{
+    display:flex;  /*Puede organizar también de arriba hacia abajo añadiendo flex-direction:column*/
+    gap: 20px;  /*Es una propiedad de Flex, hace que los elementos se separen, y es esencial en cualquier
+    disposición Flex */
+    flex-wrap: wrap;/*Para que se no se desborden los elementos de el ancho máximo de la página,
+    hace que se añadan más o menos elementos dependiendo del ancho. */
+    justify-content: center; /*Para  centrar elementos fila por fila*/
+    margin-top: 20px; /* Para separar las tarjetas del header */
+}
+
+.tarjeta {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(49, 49, 49);
+    transition: transform 0.3s ease, box-shadow 0.3 ease; /* Sólo ejecuta con los cambios, es decir, tamto con hover como
+    volver al estado normal 
+    overflow:hidden; /* evita que el contenido desborde fuera */
+    flex: 1 1 /*quiero que todas las imágenes ocupen lo mismo*/calc(20%-20px); /*Cuanto queremos que ocupe 
+    cada una de las imagenes (100/5)=20 - 20 px que tienen a los lados y que hemos puesto 
+    anteriormente con la propiedad gap*/
+    max-width: calc(20%-20px);
+    min-width: 200px;
+}
+
+.tarjeta img {
+    width: 100%; /* Las imágenes ocupan todo el ancho de la tarjeta */
+    height:auto; /*Y ya no dejan huecos a su alrededor */
+}
+
+.tarjeta:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgb(0, 0, 0)
+}
+
+
+
+
+/*BLOQUE = LÍNEA ; INLINE ES QUE SE VAN UBICANDO UNA AL LADO DE OTRO
+bLOQUE = ETIQUETAS QUE USAS PARA SEPARAR PARTES DEL DOCUMENTO
+INLINE: IMAGENES, ELEMENTOS DENTRO DEL FORMULARIO*/
+
+
+/*MEDIA QUERYS para que los elementos ocupen menos número de columnas a partir de <800px*/
+@media (max-width: 800px) {
+
+    .logo {
+        width: 250px;
+    }
+    .tarjeta {
+        flex: 1 1 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
+}
+
+
+/*Importante: Qué pasa al activar flex. Qué es flex-wrap */
