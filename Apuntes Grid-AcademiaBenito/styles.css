@@ -1,0 +1,141 @@
+/*El asterisco hace que se hereden incluso las propiedades que por defecto no se heredarían de padres a hijos
+(como background color */
+* {
+    box-sizing: border-box; /*Hace que los elementos contemplen el border y el padding y no sobresalgan del contenedor */
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3f5f7;
+    color: #1f2929;
+}
+
+.topbar {
+    padding: 20px;
+    background-color:  #111111;
+    color:#f3f5f7
+}
+
+.logo {
+    height: auto;
+    width: 200px;
+    border-radius: 8px;
+}
+
+/* En flexbox, se hacen filas en una única dimensión (hacia al lado, o hacia abajo; cuando no cabe, se colocan debajo, o al lado).
+Con grid organizamos filas y columnas. */
+
+.header-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid; /*Por defecto, se crea una única columna (sin añadir ninguna config más, el resultado
+    es como activar Display: block. */
+
+    grid-template-columns: 1fr 1fr; /*Le indicamos cuantas columnas queremos, pasandole tantos parámetros como columnas 
+    queremos (1fr 1fr significa que las 2 columnas ocupan lo mismo), por defecto se nos ajusta el contenido 
+    a la izquierda. */
+    gap: 16px; /*Al igual que en flex, separa los elementos que componen flex, o grid. */
+}
+
+.tite h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 12 px;
+    padding: 18px;
+    box-shadow: 0 10px 20px rgb(104, 69, 69);
+}
+
+.page {
+    max-width: 1100px;
+    margin: 16px auto; /*auto para que se centre en la horizontal */
+    padding : 0 14px; /* Si pones un número se refienre a todas las direcciones, si pones 2, el primero arriba y abajo,
+    y el segundo izq y dcha, si pones 3 aplicas el primero superior , segundo derecha , 3º abajo y izquierda. Si pones 
+    4, en el orden de las agujas del reloj empezando por arriba. */
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    grid-template-areas: /* Coloca las filas y columnas exactamente como se dibujan en el texto que se le pasa*/
+    "nav      main     sidebar"
+    "nav      main     widgets"
+    "footer   footer   footer"
+     ; 
+}
+
+.nav {
+    grid-area: nav; /* Grid no entiende las clases si no se las especificamos */   
+}
+.main { grid-area: main;}
+.sidebar { grid-area: sidebar;  }
+.widgets { grid-area: widgets;  }
+.footer { grid-area: footer;  }
+
+.grid-gallery {
+    margin-top: 12px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /*auto-fit dice que coloca tantas fotos como quepan, 
+    y minmax le da un mínimo, en este caso sin máximo*/
+    /* */
+    grid-auto-rows: 110px; /* La altura base de cada una de las filas va a ser... */
+}
+
+.photo {
+    background-color: rgb(255, 255, 81);
+    border-radius: 12px;
+    border:1px solid #1f2929;
+    font-weight: 700; /*700 equivale a bold, 800 a bolder*/
+}
+
+.photo.big {
+    background-color: rgb(44, 44, 218);
+    grid-row:span 2;
+    grid-column: span 2;
+}
+
+.photo.tall {
+    background-color: rgb(47, 145, 47);
+    grid-row:span 2; /*Esto el efecto que tiene es que ocupa 2 filas (rows)*/
+}
+
+.photo.wide {
+    grid-column: span 2;
+    background-color: aqua;
+}
+
+.widgets-grid{
+    margin-top: 12px;
+    display: grid;
+    gap: 10px;
+    /*Esta sección contiene 4 elementos, que se van a organizar en 2 columnas */
+    grid-template-columns: repeat(2 1fr);
+}
+
+
+@media (max-width: 900px) {
+    .page{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "nav nav"
+        "main main"
+        "sidebar widgets"
+        "footer footer";
+    }
+}
+
+@media (max-width: 500px) {
+    .page{
+        grid-template-columns: 1fr; /*todas ocupan lo mismo*/
+        grid-template-areas: 
+        "nav"
+        "main"
+        "sidebar"
+        "widgets"
+        "footer";
+    }
+}
