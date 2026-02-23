@@ -327,14 +327,10 @@ LOS HIJOS.
 }
 
 .gallery{
-
-
-   display: grid;
-   gap: 10px;
-   margin-top: 12px;
-   grid-template-columns: repeat(auto-fill, minmax(240, 1fr));
-
-
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .gallery img{
