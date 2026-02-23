@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CSS Grid: auto-fill vs auto-fit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>CSS Grid: <span>auto-fill</span> vs <span>auto-fit</span></h1>
+
+      <p>
+        Ambos se usan con:
+        <code>repeat(auto-..., minmax(180px, 1fr))</code>
+        para crear columnas responsivas sin media queries.
+        <!--La etiqueta <code> en HTML es un elemento semántico en línea utilizado para 
+      representar fragmentos de código de programación o informático. 
+      Define el texto como código, mostrándolo generalmente en una fuente 
+      monoespaciada (como Courier) para diferenciarlo del texto normal, 
+      permitiendo visualizar el código sin ejecutarlo.-->
+      </p>
+
+      <div class="panel">
+        <h2>Objetivo</h2>
+        <p>
+          Entender cuándo <strong>se ve la diferencia</strong> entre auto-fill y
+          auto-fit.
+        </p>
+
+        <ul>
+          <li>Si NO sobran columnas: se ven igual.</li>
+          <li>Si sobran columnas vacías: se comportan distinto.</li>
+        </ul>
+
+        <p>
+          <strong>auto-fit NO estira siempre.</strong><br />
+          Solo estira cuando tiene columnas vacías que pueda colapsar.
+        </p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- ========================== -->
+      <!-- AUTO-FILL -->
+      <!-- ========================== -->
+      <section class="panel">
+        <h2>Demo A — <code>auto-fill</code></h2>
+
+        <p>
+          <strong>Qué hace:</strong> crea todas las columnas posibles según el
+          ancho disponible. Si no hay suficientes elementos, las columnas vacías
+          siguen existiendo.
+        </p>
+
+        <p>
+          Eso significa que puede haber “columnas fantasma” ocupando espacio.
+        </p>
+
+        <div class="demo demo-fill">
+          <div class="card">1</div>
+          <div class="card">2</div>
+          <div class="card">3</div>
+          <div class="card">4</div>
+          <div class="card">5</div>
+          <div class="card">6</div>
+        </div>
+
+        <div class="note">
+          <strong>Prueba:</strong><br />
+          Deja solo 3 tarjetas (comenta las demás).<br />
+          Ensancha la ventana.<br />
+          Observa cómo aparecen huecos a la derecha.
+        </div>
+
+        <div class="panel" style="margin-top: 15px">
+          <h3>Qué está pasando técnicamente</h3>
+          <p>
+            <code>repeat(auto-fill, minmax(180px, 1fr))</code>
+          </p>
+          <ul>
+            <li>auto-fill calcula cuántas columnas caben.</li>
+            <li>Si caben 6 columnas, crea 6.</li>
+            <li>Aunque solo haya 3 tarjetas, las 6 columnas existen.</li>
+            <li>Las columnas sin contenido ocupan espacio.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ========================== -->
+      <!-- AUTO-FIT -->
+      <!-- ========================== -->
+      <section class="panel">
+        <h2>Demo B — <code>auto-fit</code></h2>
+
+        <p>
+          <strong>Qué hace:</strong> también calcula cuántas columnas caben,
+          pero si sobran columnas sin contenido las colapsa.
+        </p>
+
+        <p>
+          Eso permite que las tarjetas se estiren y ocupen el espacio libre.
+        </p>
+
+        <div class="demo demo-fit">
+          <div class="card">1</div>
+          <div class="card">2</div>
+          <div class="card">3</div>
+          <div class="card">4</div>
+          <div class="card">5</div>
+          <div class="card">6</div>
+        </div>
+
+        <div class="note">
+          <strong>Haz la misma prueba:</strong><br />
+          Deja solo 3 tarjetas y ensancha la ventana.<br />
+          Ahora las tarjetas ocuparán todo el espacio.
+        </div>
+
+        <div class="panel" style="margin-top: 15px">
+          <h3>Qué está pasando técnicamente</h3>
+          <p>
+            <code>repeat(auto-fit, minmax(180px, 1fr))</code>
+          </p>
+          <ul>
+            <li>auto-fit también calcula cuántas columnas caben.</li>
+            <li>Si sobran columnas sin contenido → las colapsa (ancho 0).</li>
+            <li>
+              El espacio libre se reparte entre las columnas que sí tienen
+              tarjetas.
+            </li>
+            <li>Gracias al <code>1fr</code>, las tarjetas se estiran.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ========================== -->
+      <!-- CUÁNDO NO SE VE DIFERENCIA -->
+      <!-- ========================== -->
+      <section class="panel">
+        <h2>¿Por qué a veces se ven iguales?</h2>
+
+        <p>Porque no sobran columnas.</p>
+
+        <p>
+          Si tienes suficientes tarjetas para llenar todas las columnas que
+          caben en el contenedor, no existen pistas vacías.
+        </p>
+
+        <ul>
+          <li>No hay columnas vacías.</li>
+          <li>No hay nada que colapsar.</li>
+          <li>auto-fill y auto-fit se comportan igual.</li>
+        </ul>
+
+        <p>La diferencia depende del escenario.</p>
+      </section>
+
+      <!-- ========================== -->
+      <!-- RESUMEN FINAL -->
+      <!-- ========================== -->
+      <section class="panel summary">
+        <h2>Resumen</h2>
+
+        <ul>
+          <li><strong>auto-fill</strong> : mantiene columnas vacías.</li>
+          <li><strong>auto-fit</strong> : colapsa columnas vacías.</li>
+          <li>Si no hay columnas vacías : se ven igual.</li>
+        </ul>
+
+        <p>
+          Regla mental:
+          <strong> “auto-fill reserva espacio, auto-fit lo aprovecha.” </strong>
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <small>
+        Juega con el número de tarjetas y con el ancho de la ventana.
+      </small>
+    </footer>
+  </body>
+</html>
