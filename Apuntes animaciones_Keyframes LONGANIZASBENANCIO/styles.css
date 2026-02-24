@@ -123,6 +123,15 @@ body{
 
   /* Capa final: color sólido del fondo */
   var(--bg);
+
+  max-width: 1200px;
+  margin: 0px auto; /*!!!!ALINEA TODOS LOS ELEMENTOS DENTRO DEL ELEMENTO 
+  PADRE !!!!!!!!*/
+  /*tEXT-ALIGN CENTER LINEA TEXTO O ELEMENTOS INLINE 
+  DENTRO DE UN CONTENEDOR.
+  align-items:
+  Justify-content: center se usa con display-Flex, 
+  al igual que align-items: center centra en EJE SECUNDARIO!*/
 }
 
 /* Links
@@ -430,9 +439,38 @@ a{ color: inherit; text-decoration: none; }
   margin: 18px 0;
 }
 
-/* Shine desactivado (si se activara, se vería un barrido de brillo) */
+
 .shine{
-  display: none; /* sin animación */
+
+
+  position: absolute /*La propiedad CSS position: absolute se utiliza para 
+  sacar un elemento del flujo normal del documento y posicionarlo con precisión 
+  absoluta respecto a su contenedor padre posicionado más cercano*/;
+
+  /* top: -40%; /*Quiero que se exceda por arriba
+  button: -40%; Por abajo
+  left: -40%; Izquierda
+  right: -40%; Derecha*/
+
+  inset: -40% -60%; /*Es un resumen de lo anterior*/
+
+  background: linear-gradient(
+      110deg, /*Con esto va a quedar recto en el eje horizontal*/
+      transparent 40%, /*opacidad inicial*/
+      rgba(255,255,255, .20) 50%,
+      transparent 60% 
+
+  );
+  transform: rotate(14deg); /*Añadir esta rotación posterior, en vez de colocar 
+  directamente la orientación final en los deg de linear-gradient, hace un efecto
+  mejor*/
+
+   /*Esta etiqueta va a cubrir el botón que tiene el contenedor padre,
+   por lo tanto usamos: pointer-events:none; para desactivar los eventos
+   de ratón en esta capa*/
+   pointer-events:none;
+
+   animation: lineaLoca 3s ease-in-out infinite;
 }
 
 /* Emoji decorativo situado en esquina */
@@ -464,11 +502,17 @@ a{ color: inherit; text-decoration: none; }
 
   /* fondo sutil para diferenciarla del resto */
   background: rgba(255,255,255,.03);
+
+  overflow: hidden; /*overflow: hidden; en CSS se utiliza principalmente 
+  para recortar y ocultar cualquier contenido (imágenes, texto, elementos hijos) 
+  que sobresalga de los límites definidos de su contenedor. */
 }
 
 /* Track de la cinta: elementos en fila */
 .marquee-track{
   display: flex;
+
+  white-space: nowrap; /*Anula saltos de línea*/
 
   /* separación entre mensajes */
   gap: 34px;
@@ -476,6 +520,8 @@ a{ color: inherit; text-decoration: none; }
   padding: 12px 0;
 
   color: var(--muted);
+
+  animation: marqueeMove 15s linear infinite;
 }
 
 
@@ -722,7 +768,20 @@ input, textarea{
     100% { transform: translateY(0px);  opacity: 1; }
 }
 
+@keyframes marqueeMove{
 
+   from { transform: trnslateX(0);}
+   to { transform: translateX(-50%);} /*Para que no queden espacios en blanco
+   entre que llega hasta el fin*/
+}
+
+@keyframes lineaLoca{
+   0% { transform: translateX(-40%) rotate(12deg); opacity:0;} /*Opacity no forma parte del
+   transform, por eso se separa por punto y coma*/
+   30%{opacity:1;}
+   60%{opacity:1;}
+   100% { transform: translateX(40%) rotate(12deg); opacity:0;}
+}
 
 /* =========================
    RESPONSIVE

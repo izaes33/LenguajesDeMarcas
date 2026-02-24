@@ -7,6 +7,10 @@
 
     <!-- SOLO tu CSS -->
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
 
   <body>
@@ -15,7 +19,9 @@
         <span class="logo">🌭</span>
 
         <div class="brand-text">
-          <h1>Longanizas Benancio</h1>
+          <h1 class="animate__animated animate__fadeInDown">
+            Longanizas Benancio
+          </h1>
           <p>Tradición, humo y alegría desde 1952.</p>
         </div>
       </div>
@@ -67,6 +73,9 @@
             <button class="btn btn-secondary">Añadir al carrito</button>
 
             <div class="shine"></div>
+            <!--Este contenedor vacío va a servir 
+            para añadir una animación sobre el contenedor que abarca 
+            la TODOS LOS ELEMENTOS QUE CONTENGA SU TARJETA PADRE-->
           </article>
 
           <div class="floating-sausage">🌭</div>
@@ -75,6 +84,10 @@
 
       <!-- CINTA -->
       <section class="marquee">
+        <!--El uso de class="marquee" (o más tradicionalmente la etiqueta <marquee>) 
+        se utiliza para crear un efecto de texto o imágenes que se desplazan 
+        automáticamente a través de la pantalla, ya sea de derecha a izquierda, 
+        de arriba a abajo, o rebotando.-->
         <div class="marquee-track">
           <span>2x1 los viernes en “Dulce Picante”</span>
           <span>Receta gratis con cada pedido</span>
