@@ -11,6 +11,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <!-- Referencia al servidor CDN de animate.css para poder 
+    acceder a la librería de forma remota -->
   </head>
 
   <body>
@@ -21,8 +23,14 @@
         <div class="brand-text">
           <h1 class="animate__animated animate__fadeInDown">
             Longanizas Benancio
+            <!-- Los fade describen la forma en la que va a entrar
+                   un elemento al cargar la página (texto, botón o imagen)
+                   mediante un fundido simple con deslizamiento suave.-->
           </h1>
-          <p>Tradición, humo y alegría desde 1952.</p>
+          <p class="animate__animated animate__fadeIn animate__delay-1s">
+            Tradición, humo y alegría desde 1952.
+          </p>
+          <!--fadeIn va de opacidad 0 a opacidad 100%, y delay es el tiempo-->
         </div>
       </div>
 
@@ -37,12 +45,29 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero-left">
-          <h2>La longaniza que te pone una sonrisa</h2>
+          <h2 class="animate__animated animate__backInLeft">
+            La longaniza que te pone una sonrisa
+          </h2>
+          <!--backInLeft hace que algo aparezca desde la izquierda
+          con una entrada más dramática que viene desde más lejos, reduciendo su tamaño 
+          y entrando con un "rebote" trasero (zoom-in).-->
 
-          <p>Curadas al punto, con especias secretas y un toque “Benancio”.</p>
+          <p class="animate__animated animate__fadeInLeftBig animate__delay-1s">
+            Curadas al punto, con especias secretas y un toque “Benancio”.
+            <!--fadeInBig hace que se desplace con más velocidad, empezando a 
+            aparecer más tarde y terminando también después, aunque es muy sutil-->
+          </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#productos">Ver catálogo</a>
+            <a
+              class="btn btn-primary animate__animated animate__heartBeat animate__infinite animate__slow"
+              href="#productos"
+              >Ver catálogo</a
+            >
+            <!--animate__heatBeat produce un latido en el elemento, y animate__infinite
+            hace que se produzca de manera infinita; además de __infinite, otra posibilidad
+            es __repeat-nº, que hace que se repita un nº determinado de veces.
+            Por otro lado, hay velocidades predefinidas como __slow, __slower, __fast, o __faster-->
             <a class="btn btn-ghost" href="#contacto">Pedir por WhatsApp</a>
           </div>
 
@@ -111,8 +136,10 @@
           <p class="muted">Tres clásicos… y ninguno dura en la nevera.</p>
         </header>
 
+        <!-- Generar una sincronía entre animaciones: -->
         <div class="grid">
-          <article class="card">
+          <article class="card animate__animated animate__jackInTheBox">
+            <!-- __jackInTheBox inserta el elemento jugando con opacidad, escala y rotación-->
             <h3>Clásica Ahumada</h3>
             <p class="muted">Sabor intenso, curación lenta.</p>
 
@@ -122,7 +149,9 @@
             </div>
           </article>
 
-          <article class="card">
+          <article
+            class="card animate__animated animate__jackInTheBox animate__delay-1s"
+          >
             <h3>Dulce Picante</h3>
             <p class="muted">El “pica pero no mata”</p>
 
@@ -132,7 +161,9 @@
             </div>
           </article>
 
-          <article class="card">
+          <article
+            class="card animate__animated animate__jackInTheBox animate__delay-2s"
+          >
             <h3>Extra Pimienta</h3>
             <p class="muted">Para valientes del molinillo.</p>
 
@@ -195,8 +226,20 @@
       <p>© <span id="year"></span> Longanizas Benancio</p>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <div class="capa-estrellita"></div>
+    <!-- Al igual que hicimos en la hero card, donde añadíamos un div dentro de ella
+     para añadir una capa que cubriera a todo el elemento padre para darle el
+     efecto, y después le indicábamos que no tuviera capacidad de obtener clicks,
+     para poder interactuar con el elemento al que estaba cubriendo, aquí hacemos lo
+     mismo para cubrir todo el body-->
+
+    <script src="script.js"></script>
+    <!-- Para importar la hoja de los scripts se debe importar la hoja al final
+     del documento HTML porque el script se carga de forma secuencial y necesita
+     tener el DOM activo antes de ser utilizado
+     (se puede importar en el head indicando que haya precarga del HTML)-->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <!-- Esta etiqueta se ha copiado de la página de GSAP y enlaca al CDN -->
   </body>
 </html>

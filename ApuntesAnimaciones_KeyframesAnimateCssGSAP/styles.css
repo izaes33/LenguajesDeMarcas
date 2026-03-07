@@ -704,6 +704,71 @@ input, textarea{
   color: var(--muted);
 }
 
+/* CAPA CONTENEDORA DE LAS ESTRELLITAS
+   Esta capa cubre toda la pantalla y sirve como "lienzo"
+   donde se insertan dinámicamente las estrellas. */
+.capa-estrellita {
+
+   /* position: fixed;
+      Fija el elemento respecto a la ventana del navegador.
+      No se mueve aunque el usuario haga scroll.
+      Ideal para efectos visuales que deben cubrir toda la pantalla. */
+   position: fixed;
+
+   /* inset: 0;
+      Es un atajo moderno equivalente a:
+      top: 0; right: 0; bottom: 0; left: 0;
+      Esto hace que la capa ocupe toda la pantalla. */
+   inset: 0;
+
+   /* pointer-events: none;
+      Permite que los clics y movimientos del mouse
+      "atraviesen" esta capa.
+      Es fundamental para que no bloquee botones o enlaces debajo. */
+   pointer-events: none;
+
+   /* overflow: hidden;
+      Oculta cualquier estrellita que se salga
+      de los límites de la pantalla.
+      Evita barras de scroll accidentales. */
+   overflow: hidden;
+
+   /* z-index: 999;
+      Coloca esta capa por encima de la mayoría
+      de los elementos de la página.
+      Solo elementos con un z-index mayor podrían superarla. */
+   z-index: 999;
+}
+
+
+
+/* ESTILO DE CADA ESTRELLITA INDIVIDUAL
+   Estas se crean dinámicamente con JavaScript.
+   (La clase se crea en Js) */
+.estrellita {
+
+   /* position: absolute;
+      Permite posicionar cada estrella en coordenadas X e Y específicas
+      dentro del contenedor (.capa-estrellita). */
+   position: absolute;
+
+   /* font-size: 18px;
+      Define el tamaño del emoji.
+      Al ser texto (✨), se comporta como una fuente. */
+   font-size: 18px;
+
+   /* will-change: transform, opacity; Le dice al navegador:
+      "Este elemento probablemente cambiará su transform o su opacidad"
+      muy a menudo.
+      (Esto permite optimizaciones internas (GPU acceleration)
+      y mejora el rendimiento en animaciones).
+      No debe abusarse de esta propiedad,
+      pero en efectos dinámicos como este es apropiada. */
+   will-change: transform, opacity;
+   /* Lo que hace el navegador es generar un hilo para cada animación
+   y si puede o considera necesario pedir capacidad a la GPU */
+}
+
 
 
 /* =========================
