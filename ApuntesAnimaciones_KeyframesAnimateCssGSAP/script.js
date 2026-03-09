@@ -76,6 +76,34 @@ if (layer) {
         // Esto hace que aparezca visualmente en la página.
         layer.appendChild(s);
 
+        //El objetivo de gsap es que haya una transición, por eso .set se refiere al 
+        // momento inicial y .to en el momento final
+        gsap.set(s, { 
+            //El primer parámetro es sobre qué queremos aplicar el gsap, 
+        // y el segundo es qué queremos que ocurra
+            x: e.clientX,
+            y: e.clientY,
+            // gsap permite añadir algo que queremos que ocurra en coordenadas x e y
+            scale: 1,  // podemos añadir efectos en el momento inicial 
+            opcacity: 1,
+        })
+
+        //gsap.to es lo que queremos que ocurra en el último momento
+        gsap.to(s, {
+            y: e.clientY - 50 - Math.random()*30, //establece un rango máximo en el que puede 
+            // aparecer la estrellita 
+            x: e.clientX + (Math.random()*60 - 30),
+            rotation: Math.random() * 180 - 90,
+            scale: .2,
+            opacity:0,
+            duration: .8,
+            ease: "power2.out",
+
+            onComplete: () => s.remove()
+            //esto elimina los elementos una vez dejan de aparecer para no saturar la web
+        })
+        
+
     });
 
 }
