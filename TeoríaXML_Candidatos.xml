@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<candidatos> <!--Etiqueta (elemento)
+    raíz-->
+    <candidato id="C01"> <!--Etiqueta
+        (elemento) hijo con atributo id-->
+        <nombre>Michael Schumacher</nombre>
+        <email>schumi</email>
+        <telefono>+35151545</telefono>
+        <experiencia>siete veces campeón mundial de F1</experiencia>
+        <!--Las
+        etiquetas siempre guardan String, y lo que se guarda dentro de una etiqueta 
+        son DATOS EFECTIVOS, QUE VAN A SER RENDERIZADOS EN PANTALLA, Y VAN A SER SUSCEPTIBLES DE 
+        MODIFICACIÓN. 
+        Al contrario, los atributos SON METADATOS (que no se renderizan) no tienen la capacidad
+        de ser modificados, NO SE PUEDEN REPETIR, Y TAMPOCO PUEDEN IR VACÍOS POR EJEMPLO: ID, -->
+    </candidato>
+    <candidato id="C02">
+        <nombre>Marco Polo</nombre>
+        <email>marcopolo</email>
+        <telefono>+35151545</telefono>
+        <experiencia>mercader y viajero</experiencia>
+        <porfolio>
+            <![CDATA[<a href="asiaoriental.com"/>]]> <!--CDATA
+            sirve para
+            incluir bloques de texto que contienen caracteres especiales 
+            —como <, >, &, ', "— sin que el analizador (parser) XML los 
+            interprete como marcado o etiquetas.-->
+        </porfolio>
+    </candidato>
+</candidatos>
