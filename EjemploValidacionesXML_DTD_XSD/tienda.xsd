@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+
+    <!-- Creamos un tipo propio:-->
+    <xs:simpleType name="tipoNombre">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2"></xs:minLength>
+            <xs:maxLength value="40"></xs:maxLength>
+            <xs:pattern value="[A-Za-z]"></xs:pattern> <!-- Mediante esto podemos establecer
+            patrones,
+        en este caso indicamos que sólo puede contener letras de la a a la z, en minúsculas
+        y en mayúsculas, sin acentos (para que tuviera acentos habría que indicarlos-->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoPrecio">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"></xs:minInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!--Aquí
+    dentro vamos a definir la estructura (molde) del XML-->
+    <xs:element name="tienda">
+        <xs:complexType> <!-- esta etiqueta se añade cuando un elemento tiene hijos-->
+            <xs:sequence> <!-- esta para indicar los hijos -->
+                <xs:element name="productos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="producto">
+                                <!-- Al indicar un element sin nada más, se indica que debe de haber
+     un único elemento, hay dos parámetros: minOccurs y maxOccurs que indican mínimo 
+     y máximo que puede haber (al ser una secuencia ya obliga a que el mínimo sea 1).
+     maxOccurs="unbounded" significa que va a poder existir 1 o varios elementos dentro-->
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nombre" type="xs:string"></xs:element>
+                                        <xs:element name="precio" type="xs:decimal"></xs:element>
+                                    </xs:sequence>
+                                    <!-- Para indicar los atributos, fuera de la secuencia y dentro
+                                    del 
+                                 elemento, indicamos: -->
+                                    <xs:attribute name="idProd" type="xs:string" use="required">
+                                        <!-- Los use pueden ser:
+                                         required: obligatorio
+                                         prohibido:
+                                         optional: -->
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,33 @@
+<!ELEMENT tienda (productos, pedidos)>
+<!--Esta etiqueta indica que el elemento padre es
+tienda y que obligatoriamente tiene
+las etiquetas hijas productos y pedidos.
+Dento de los elementos del paréntesis, podemos utilizar indicadores de ocurrencia
+añadiendo el signo ? para indicar que alguna de las etiquetas pudiera no estar, 
+o estar una vez-->
+
+<!ELEMENT productos (producto+)>
+<!--Otros
+indicadores de ocurrencia son el asterisco, que indica que un elemento puede aparecer
+cero o más veces, o el signo más, que indica que al menos debe de haber 1.
+Si no usamos ningún indicador de ocurrencia, dtd interpreta que debe de haber UNO,
+única y obligatoriamente-->
+
+<!ELEMENT producto (nombre, precio)>
+<!ATTLIST producto idProd ID #REQUIRED
+>
+<!--A
+los atributos también se les debe establecer limitaciones, y para ello  se definen en 
+una etiqueta ATTLIST, añadiendo el nombre del atributo e indicando si es un dato especial
+como en este caso ID (que obliga a que sea único), y por consiguiente como es un dato 
+obligatorio #REQUIRED-->
+
+<!ELEMENT pedidos (pedido+)>
+
+<!ELEMENT pedido (productoRef, cantidad)>
+<!ATTLIST pedido idPedido ID #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT precio (#PCDATA)>
+<!ELEMENT productoRef (#PCDATA)>
+<!ELEMENT cantidad (#PCDATA)>

@@ -1,0 +1,24 @@
+La extensión XML de Red Hat para Visual Studio Code sirve para mejorar drásticamente 
+la edición de archivos XML, ofreciendo validación en tiempo real, autocompletado de
+etiquetas, formateo de código y soporte para XSD/DTD. Es fundamental para desarrolladores 
+que trabajan con archivos de configuración (como pom.xml de Maven) o estructuras de datos 
+jerárquicas.
+
+El problema que tenemos con un XML básico es que no valida qué tipo de cosa es cada una
+dentro de su estructura (no hay forma de validar).
+XML se usa en alguna en algunos entornos por seguridad, ya que tiene una forma de validación
+por XSD que es más estricta que JSON (que necesita scripts).
+
+En un ejemplo, una cadena de venta de ropa, genera tickets en cada sucursal, y cada x minutos
+éstos se envían a central, y para asegurarse de que los datos cumplem con la misma estructura
+que los que se esperan del otro lado, se usó en un principio DTD y a día de hoy XSD.
+Para implementar la validación, dentro de la hoja que alberga el XML se añade la etiqueta
+<!DOCTYPE tienda SYSTEM "tienda.dtd">
+lo que obliga posteriormente a declarar dentro de un archivo .dtd todo lo referente al XML.
+Pare definir la estructura, le decimos el elemento padre que vamos a tener, sus hijos, y si
+éstos van a ser obligatorios o no.
+
+XSD es lenguaje XML (no como DTD, que es otro tipo de lenguaje en sí mismo), algunas de las 
+ventajas que ofrece son: diferenciación entre tipos de datos (no como DTD que lo contempla
+todo como texto), restricciones para los valores más avanzadas, y nameSpaces (en proyectos
+avanzados) que alimentan el XSD
