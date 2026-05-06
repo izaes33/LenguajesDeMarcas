@@ -1,0 +1,474 @@
+/* =========================================================
+   styles.css — ARCHIVO COMPLETO (SIN GRID, SIN FLEX)
+   =========================================================
+   OBJETIVO DIDÁCTICO:
+   - Usar una base “clásica” (float/clear) para maquetar dos columnas.
+   - Explicar selectores, modelo de caja, tablas, formularios, pseudo-elementos,
+     position: fixed y responsive con media queries.
+
+   NOTA PARA ALUMNOS:
+   - Este CSS NO usa Flexbox ni Grid (se verán más adelante).
+   - El layout a dos columnas se hace con float, una técnica clásica.
+   ========================================================= */
+
+
+/* =========================================================
+   0) :root (variables CSS / Custom Properties)
+   =========================================================
+   :root apunta al elemento raíz (html) y es un buen sitio para definir
+   VARIABLES CSS reutilizables en todo el documento.
+*/
+:root {
+   /* Color principal para textos y elementos clave */
+   --color-principal: #1D3535;
+
+   /* Color secundario (acentos, enlaces, detalles) */
+   --color-secundario: #4545CC;
+
+   /* Radio común de esquinas redondeadas */
+   --border-radius: 8px;
+}
+
+
+/* =========================================================
+   1) SELECTOR UNIVERSAL (*)
+   =========================================================
+   Reset básico de márgenes y modelo de caja.
+*/
+* {
+    /* Quita márgenes por defecto del navegador */
+    margin: 0;
+
+    /* Hace más fácil calcular tamaños (width incluye padding y borde) */
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   2) BODY (estilos globales)
+   ========================================================= */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: azure;
+
+    /* Usamos variable: si cambiamos --color-principal, cambia todo el texto */
+    color: var(--color-principal);
+
+    /* 
+       padding-top grande porque el header está FIXED y tapa contenido.
+       En móvil lo reajustamos en la media query.
+       (Este valor idealmente se iguala a la altura real del header.)
+    */
+    padding-top: 300px;
+
+    /* (Extra útil) Algo de aire lateral para que el contenido no “choque” */
+    padding-left: 20px;
+    padding-right: 20px;
+
+    /* (Extra) Aire inferior para que el footer no quede pegado al final */
+    padding-bottom: 20px;
+}
+
+
+/* =========================================================
+   3) ESTILOS GENERALES DE TEXTO Y ENLACES (añadido)
+   =========================================================
+   Esto afecta a elementos comunes (p, a, strong, etc.) para que el diseño
+   sea consistente.
+*/
+
+/* Párrafos: separamos uno del siguiente */
+p {
+    margin-bottom: 12px;
+}
+
+/* Títulos: damos separación y jerarquía visual */
+h1, h2, h3 {
+    margin-bottom: 10px;
+    line-height: 1.2; /* títulos más compactos suelen verse mejor */
+}
+
+/* Tamaños razonables para h2 y h3 (puedes ajustarlos si quieres) */
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+
+/* Enlaces: usamos el color secundario para que se identifiquen */
+a {
+    color: var(--color-secundario);
+    text-decoration: none; /* quitamos subrayado por defecto */
+}
+
+/* :hover en enlaces: recuperamos subrayado al pasar el ratón */
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   4) HEADER (cabecera fija)
+   ========================================================= */
+header {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    border: 2px solid #333;
+
+    /* Aire interno para que el contenido no toque el borde */
+    padding: 20px;
+
+    /* =====================================================
+       POSITION: fixed (cabecera fija)
+       =====================================================
+       fixed:
+       - Se posiciona respecto a la ventana del navegador.
+       - Se queda fijo al hacer scroll.
+       - Sale del flujo normal => por eso reservamos espacio con padding-top en body.
+    */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    /* z-index:
+       Asegura que quede por encima del contenido al hacer scroll.
+       Si no lo pones, a veces otros elementos podrían superponerse. */
+    z-index: 10;
+}
+
+/* Ajustes específicos dentro del header */
+header h1 {
+    font-size: 2rem;      /* 2rem ≈ 32px si base=16px */
+    margin-bottom: 8px;   /* separación respecto al texto siguiente */
+}
+
+header p {
+    color: #555;          /* un gris suave para no competir con el título */
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   5) IMAGEN LOGO (.logo)
+   ========================================================= */
+.logo {
+    /* Opción en porcentaje (si quieres que sea “responsive”):
+       width: 33%;
+       max-width: 140px;
+       En este archivo lo dejamos fijo, y en móvil lo reducimos. */
+    width: 120px;
+    height: auto;
+
+    display: block;
+    margin: 0 auto;
+
+    border-radius: 12px;
+
+    /* (Extra didáctico) Un borde suave para verla mejor sobre fondo blanco */
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+
+/* =========================================================
+   6) CONTENEDOR PRINCIPAL (.layout)
+   =========================================================
+   Este contenedor centra la zona principal y limita el ancho.
+*/
+.layout {
+   width: 90%;
+   max-width: 1100px;
+   margin: 0 auto;
+
+   /* (Extra) separa visualmente del header (aunque el body ya tiene padding-top) */
+   margin-top: 10px;
+}
+
+
+/* =========================================================
+   7) MAQUETACIÓN CLÁSICA: FLOAT + CLEAR (dos columnas)
+   ========================================================= */
+
+/* Columna principal: article.content */
+.content {
+   width: 65%;
+   float: left;
+
+   background-color: #fff;
+   border: 1px solid #333;
+   border-radius: var(--border-radius);
+   padding: 20px;
+   margin-bottom: 20px;
+}
+
+/* Sidebar: aside.sidebar */
+.sidebar {
+  width: 30%;
+  float: right;
+
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   8) LISTAS (añadido)
+   =========================================================
+   Tu HTML usa <ol> y <li>. Les damos margen y aire.
+*/
+ol {
+    /* Sangría para que los números se vean bien */
+    margin-left: 20px;
+
+    /* Separación inferior antes del siguiente bloque */
+    margin-bottom: 14px;
+}
+
+li {
+    /* Un poquito de separación entre elementos */
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   9) TABLA DE TARIFAS (añadido completo)
+   =========================================================
+   Tu tabla tiene class="tabla-tarifas".
+*/
+.tabla-tarifas {
+    width: 100%;
+
+    /* Une bordes para evitar líneas dobles */
+    border-collapse: collapse;
+
+    /* Separación superior respecto a "Tarifas orientativas" */
+    margin-top: 10px;
+
+    /* Texto un poco más compacto que el del body */
+    font-size: 0.95rem;
+}
+
+/* Celdas y cabecera */
+.tabla-tarifas th,
+.tabla-tarifas td {
+    border: 1px solid rgb(10, 113, 136);
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Cabecera destacada */
+.tabla-tarifas thead th {
+    background-color: rgba(10, 113, 136, 0.15);
+}
+
+/* Filas alternas (zebra) */
+.tabla-tarifas tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   10) CLASE GENERAL PARA BOTONES .btn
+   ========================================================= */
+.btn {
+    padding: 40px 25px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 1s ease, transform 0.3s ease;
+
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+    /* (Añadido) borde y fuente heredada para coherencia */
+    border: 2px solid #333;
+    font-family: inherit;
+}
+
+/* =========================================================
+   11) BOTONES ESPECÍFICOS + hover
+   ========================================================= */
+.btn-enviar {
+    background-color: cadetblue;
+    color: white;
+}
+
+.btn-borrar {
+    background-color: red;
+    color: #ffffff;
+}
+
+.btn-enviar:hover {
+    background-color: grey;
+    transform: scale(1.05);
+}
+
+.btn-borrar:hover {
+    background-color: grey;
+    transform: scale(1.05);
+}
+
+/* =========================================================
+   12) CONTENEDOR .contacto (sección del formulario)
+   =========================================================
+   OJO: aquí hacemos clear: both para colocarlo debajo de content+sidebar.
+*/
+.contacto {
+   clear: both;
+
+   padding: 20px;
+   background: #ccfcfc;
+   border-radius: 10px;
+
+   /* (Añadido) un borde para que se vea como “tarjeta” */
+   border: 1px solid #333;
+
+   /* (Añadido) separa el bloque del resto */
+   margin-bottom: 20px;
+}
+
+/* Texto destacado dentro del párrafo del contacto */
+.contacto .trozo {
+    color: blue;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   13) FORMULARIO: estructura y campos
+   ========================================================= */
+
+/* Cada label.campo */
+.form .campo {
+    margin-bottom: 15px;
+}
+
+/* El span dentro de .campo actúa como etiqueta */
+.form span {
+   display: block;
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+/* Inputs y textarea */
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px;
+
+  border-radius: 5px;
+  border: 1px solid rgb(10, 113, 136);
+
+  font-size: 1.2rem;
+
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover */
+.form input:hover,
+.form textarea:hover {
+    /* OJO: cambiar el grosor puede provocar “saltito”.
+       Alternativa: outline o mantener grosor fijo. */
+    border: 3px solid red;
+}
+
+/* Focus */
+.form input:focus,
+.form textarea:focus {
+    border-color: red;
+    outline: none;
+
+    /* Sombra para indicar foco (importante para usabilidad) */
+    box-shadow: -2px -2px 5px orange;
+}
+
+
+/* =========================================================
+   14) CONTENEDOR DE ACCIONES (añadido)
+   =========================================================
+   En tu HTML, los botones están dentro de <div class="acciones">.
+   Sin Flex, los botones se colocan en línea si caben (inline-block).
+*/
+.acciones {
+    /* (Simple) un pequeño margen arriba */
+    margin-top: 10px;
+}
+
+/* =========================================================
+   15) FOOTER (añadido completo)
+   =========================================================
+   Tu footer tiene class="site-footer".
+*/
+.site-footer {
+    /* Que parezca otra “tarjeta” coherente con la cabecera */
+    background-color: #ffffff;
+    border: 2px solid #333;
+    border-radius: var(--border-radius);
+
+    padding: 16px;
+    text-align: center;
+
+    /* Separación superior para que no quede pegado al contacto */
+    margin-top: 10px;
+}
+
+/* address suele venir en cursiva por defecto */
+.site-footer address {
+    font-style: normal;
+}
+
+/* Separamos el párrafo del resto */
+.site-footer p {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   16) MEDIA QUERY (RESPONSIVE)
+   =========================================================
+   En pantallas pequeñas:
+   - Reducimos el padding-top del body (header fijo menos “alto”)
+   - Reducimos el logo
+   - Quitamos floats para pasar de dos columnas a una
+   - Ajustamos botones (menos grandes)
+*/
+@media (max-width: 768px) {
+
+   body {
+      /* Ajuste del espacio reservado para el header fijo */
+      padding-top: 160px;
+   }
+
+   .logo {
+      width: 90px;
+   }
+
+   .content,
+   .sidebar {
+      width: 100%;
+      float: none;
+   }
+
+   .btn {
+      /* Botones más razonables en móvil */
+      padding: 20px 16px;
+      margin-right: 0;
+   }
+}
+
+
+/* =========================================================
+   APUNTE EXTRA (IMPORTANTE): “PROBLEMA” TÍPICO DE FLOAT
+   =========================================================
+   Con floats, a veces el contenedor padre no “abraza” la altura de los flotados.
+
+   Soluciones típicas:
+   1) Clearfix:
+      .layout::after { content:""; display:block; clear:both; }
+   2) overflow en el padre:
+      .layout { overflow: auto; } (ojo, puede recortar sombras)
+   3) Colocar un elemento con clear (como hacemos con .contacto)
+*/
